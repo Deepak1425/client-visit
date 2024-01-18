@@ -6,3 +6,6 @@ export const registerfunction = async(data)=>{
     return await commonrequest("POST",`${BACKEND_URL}/user/register`,data)
 }
 
+export const sentOtpFunction = async(data)=>{
+    return await commonrequest("POST",`${BACKEND_URL}/user/sendotp`,data)
+}
