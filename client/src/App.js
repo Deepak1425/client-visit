@@ -1,5 +1,4 @@
 import Login from './pages/login/login';
-import Register from './pages/registeration/registeration';
 import Home from './pages/home/home';
 import Otp from './pages/otp/otp';
 import Error from './pages/error/error';
@@ -15,7 +14,6 @@ function App() {
       <Headers />
       <Routes>
         <Route path='/' element={<Login />} />
-        <Route path='/register' element={<Register />} />
         <Route path='/home' element={<Home />} />
         <Route path='/user/otp' element={<Otp />} />
         <Route path='*' element={<Error />} />
