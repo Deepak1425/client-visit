@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink} from "react-router-dom"
+import { NavLink, useNavigate} from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify';
 import { sentOtpFunction } from "../../services/Apis";
 import "../../styles/style.css"
@@ -7,6 +7,7 @@ import "../../styles/style.css"
 const Login = () => {
 
     const [email, setEmail] = useState("");
+    const navigate = useNavigate();
     
 
 
@@ -26,6 +27,13 @@ const Login = () => {
             }
 
             const response = await sentOtpFunction(data);
+            
+            if (response.status === 200) {
+                
+                navigate("/user/otp",{state:email})
+            } else {
+                toast.error(response.response.data.error);
+            }
 
             console.log(response);
         }
@@ -47,7 +55,7 @@ const Login = () => {
                         <button className='btn' onClick={sendOtp}>Login
                         
                         </button>
-                        <p>Don't have and account <NavLink to="/register">Sign up</NavLink> </p>
+                        
                     </form>
                 </div>
                 <ToastContainer />
