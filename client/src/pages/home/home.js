@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
 
 const Home = () => {
 
@@ -17,8 +18,22 @@ const Home = () => {
   useEffect(() => {
     userValid();
   }, [])
+
+  const docs = [
+      { uri: require("../../files/sample.pdf"),
+      fileType:"pdf",
+      fileName:"sample.pdf"
+     }
+  ];
+
   return (
-    <div>hello home</div>
+    <div>
+      <DocViewer
+      documents={docs}
+      pluginRenderers={DocViewerRenderers}
+      style={{height:1000 }}
+    />
+    </div>
   )
 }
 
